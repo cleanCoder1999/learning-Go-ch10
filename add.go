@@ -1,11 +1,19 @@
 // Package add contains a function for adding integers
 package add
 
-// Add takes two parameters of type int, adds them, and returns the sum
+import (
+	"golang.org/x/exp/constraints"
+)
+
+// Add takes two parameters of any integer or float type, adds them, and returns the sum
 //
 // for further details [see]
 //
 // [see]: https://www/mathsisfun.com/numbers/addition.html
-func Add(a, b int) int {
+func Add[T Number](a, b T) T {
 	return a + b
+}
+
+type Number interface {
+	constraints.Integer | constraints.Float
 }
